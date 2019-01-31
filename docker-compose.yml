@@ -1,0 +1,19 @@
+    version: '2'
+    services:
+        laravel:
+            build:
+                context: ./
+                dockerfile: laravel.docker
+            ports:
+                - "80:8181"
+            links:
+                - pgsql
+        pgsql:
+            image: postgres
+            restart: always
+            ports:
+                - "5432:5432"
+            environment:
+                POSTGRES_DB: exchangerates
+                POSTGRES_USER: exchangerates
+                POSTGRES_PASSWORD: 1775
